@@ -102,22 +102,6 @@ def getIndex(col):
     # Query the database to return the documents where each term occurs with their corresponding count. Output example:
     # {'baseball':'Exercise:1','summer':'Exercise:1,California:1,Arizona:1','months':'Exercise:1,Discovery:3'}
 
-    # pipeline = [
-    #              {"$unwind": { "path": "$Terms" }},
-    #              {"$sort": {"Terms.term": 1}}
-
-    #            ]
-
-
-    # messages = col.aggregate(pipeline)
-
-    # chat = ""
-
-    # for msn in messages:
-    #     if msn['Terms']['term']:
-    #         chat += "{" + msn['Terms']['term'] + " : " +  msn['Title'] + " : " + str(msn['Terms']['count']) + "}\n"
-
-    # return chat
     pipeline = [
                 {"$unwind" : {"path" : "$Terms"}},
                 {"$sort" : {"Terms.term" : 1}}
